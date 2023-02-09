@@ -131,7 +131,7 @@ if __name__ == "__main__":
 
     accumulate_grad_batches = args.accumulate_batch // args.batch_size
     trainer = pl.Trainer(
-        logger=wandb_logger,
+        #logger=wandb_logger,
         callbacks=[lr_monitor],
         max_epochs=args.max_epochs,
         accelerator="auto",
