@@ -224,7 +224,7 @@ class Image2LatexModel(pl.LightningModule):
         latex = self.model.decode(image, self.max_length)
         try:
             mathml = latex2mathml.converter.convert(str(latex))
-        expect:
+        except:
             print("")
         print("Predicted:", mathml)
 
