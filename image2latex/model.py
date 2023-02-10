@@ -7,7 +7,7 @@ import pytorch_lightning as pl
 from torchaudio.functional import edit_distance
 from torchtext.data.metrics import bleu_score
 from evaluate import load
-from image2latex.im2latex import Image2Latex
+import latex2mathml.converter
 
 
 class Image2LatexModel(pl.LightningModule):
