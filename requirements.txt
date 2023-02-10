@@ -8,4 +8,4 @@ torchtext==0.13.1
 torchvision==0.13.1
 evaluate==0.3.0
 wandb
-image2latex
+latex2mathml
