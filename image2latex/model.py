@@ -225,7 +225,7 @@ class Image2LatexModel(pl.LightningModule):
         try:
             mathml = latex2mathml.converter.convert(str(latex))
         except:
-            print("")
+            print("Fail")
         print("Predicted:", mathml)
 
         return mathml
