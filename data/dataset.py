@@ -29,6 +29,20 @@ class LatexDataset(Dataset):
 
         formula = item["formula"]
         image = torchvision.io.read_image(item["image"])
+        chan, old_width, old_height = image.size()
+        aspect_ratio = old_height / old_width
+        new_width = old_width
+        if old_width >= 256:
+            new_width = 256
+        elif old_width >= 128:
+            new_width = 128
+        elif old_width >= 64:
+            new_width = 64
+        elif old_width >= 32:
+            new_width = 32
+        new_height = round(new_width * aspect_ratio)
+        transform = tvt.Resize(size=(new_width, new_height))
+        image = transform(image)
         image = image.to(dtype=torch.float)
         image /= image.max()
         image = self.transform(image)  # transform image to [-1, 1]
