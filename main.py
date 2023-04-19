@@ -124,14 +124,14 @@ if __name__ == "__main__":
         log_text=args.log_text,
     )
 
-    #wandb_logger = pl.loggers.WandbLogger(
-    #    project="image2latex", name=args.model_name, log_model="all"
-    #)
+    wandb_logger = pl.loggers.WandbLogger(
+        project="image2latex", name=args.model_name, log_model="all"
+    )
     lr_monitor = pl.callbacks.LearningRateMonitor(logging_interval="step")
 
     accumulate_grad_batches = args.accumulate_batch // args.batch_size
     trainer = pl.Trainer(
-        #logger=wandb_logger,
+        logger=wandb_logger,
         callbacks=[lr_monitor],
         max_epochs=args.max_epochs,
         accelerator="auto",
